@@ -27,18 +27,33 @@ import { Warehouse } from 'lucide-react';
 export default function LoginPage() {
   const router = useRouter();
   const [role, setRole] = React.useState('');
+  const { setRole: setCtxRole } = useCurrentUser();
+
+  const mapRole = (value: string): Role => {
+    switch (value) {
+      case 'admin':
+        return 'Administracion';
+      case 'manager':
+        return 'Operaciones';
+      case 'receiving':
+        return 'Recepcion';
+      case 'operator':
+        return 'Operaciones';
+      default:
+        return 'Recepcion';
+    }
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate role-based redirection
-    if (role === 'admin') {
-      router.push('/dashboard');
-    } else if (role === 'receiving') {
-      router.push('/receiving');
-    } else {
-      // Default redirection for other roles or no role selected
-      router.push('/dashboard');
-    }
+    const mapped = mapRole(role);
+    setCtxRole(mapped);
+
+    // Redirect by role
+    if (mapped === 'Recepcion') router.push('/receiving');
+    else if (mapped === 'Administracion') router.push('/dashboard');
+    else if (mapped === 'Operaciones') router.push('/inventory');
+    else router.push('/dashboard');
   };
 
   return (
