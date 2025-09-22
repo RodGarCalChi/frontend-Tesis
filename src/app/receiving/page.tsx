@@ -131,15 +131,19 @@ export default function InventoryMovementsPage() {
       </div>
 
       <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'IN' | 'OUT')} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6">
-          <TabsTrigger value="IN" className="flex items-center gap-2">
-            <ArrowDownToLine className="w-4 h-4" />
-            Entrada de Mercadería
-          </TabsTrigger>
-          <TabsTrigger value="OUT" className="flex items-center gap-2">
-            <ArrowUpFromLine className="w-4 h-4" />
-            Salida de Mercadería
-          </TabsTrigger>
+        <TabsList className={`grid w-full mb-6 ${tabs.length===1? 'grid-cols-1' : 'grid-cols-2'}`}>
+          {tabs.includes('IN') && (
+            <TabsTrigger value="IN" className="flex items-center gap-2">
+              <ArrowDownToLine className="w-4 h-4" />
+              Entrada de Mercadería
+            </TabsTrigger>
+          )}
+          {tabs.includes('OUT') && (
+            <TabsTrigger value="OUT" className="flex items-center gap-2">
+              <ArrowUpFromLine className="w-4 h-4" />
+              Salida de Mercadería
+            </TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="IN">
