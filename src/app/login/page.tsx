@@ -45,13 +45,16 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const mapped = mapRole(role);
-    try { localStorage.setItem('pharmaflow:role', mapped); } catch (e) {}
+    try { localStorage.setItem('pharmaflow:role', mapped); } catch (err) {}
 
-    // Redirect by role
-    if (mapped === 'Recepcion') router.push('/receiving');
-    else if (mapped === 'Administracion') router.push('/dashboard');
-    else if (mapped === 'Operaciones') router.push('/inventory');
-    else router.push('/dashboard');
+    const target = mapped === 'Recepcion' ? '/receiving' : mapped === 'Administracion' ? '/dashboard' : mapped === 'Operaciones' ? '/inventory' : '/dashboard';
+
+    // Prefer SPA navigation but fall back to full navigation if fetch fails (some third-party scripts may interfere with fetch)
+    try {
+      router.push(target).catch(() => { window.location.href = target; });
+    } catch (err) {
+      window.location.href = target;
+    }
   };
 
   return (
