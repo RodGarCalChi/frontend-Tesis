@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -349,7 +348,7 @@ export default function UsersPage() {
                       <div>
                         <div className="font-medium">{user.firstName} {user.lastName}</div>
                         <div className="text-sm text-muted-foreground">
-                          Creado: {new Date(user.createdAt).toLocaleDateString()}
+                          Creado: {formatDateISO(user.createdAt)}
                         </div>
                       </div>
                     </div>
