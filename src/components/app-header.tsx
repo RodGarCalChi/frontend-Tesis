@@ -54,6 +54,20 @@ export default function AppHeader() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <div className="px-3 py-2">
+              <div className="text-sm text-muted-foreground">Role</div>
+              <div className="flex gap-2 mt-2 flex-wrap">
+                {ALL_ROLES.map((r) => (
+                  <button
+                    key={r}
+                    className="px-2 py-1 text-sm rounded bg-background/50 hover:bg-background"
+                    onClick={() => setRole(r as any)}
+                  >
+                    {r}
+                  </button>
+                ))}
+              </div>
+            </div>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
