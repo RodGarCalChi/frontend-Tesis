@@ -146,6 +146,7 @@ export default function InventoryMovementsPage() {
           )}
         </TabsList>
 
+        {tabs.includes('IN') && (
         <TabsContent value="IN">
           <Card className="w-full max-w-4xl mx-auto">
             <CardHeader>
@@ -261,7 +262,9 @@ export default function InventoryMovementsPage() {
             </form>
           </Card>
         </TabsContent>
+          )}
 
+        {tabs.includes('OUT') && (
         <TabsContent value="OUT">
           <Card className="w-full max-w-4xl mx-auto">
             <CardHeader>
@@ -377,6 +380,7 @@ export default function InventoryMovementsPage() {
             </form>
           </Card>
         </TabsContent>
+          )}
       </Tabs>
 
       {/* Recent Movements Section */}
