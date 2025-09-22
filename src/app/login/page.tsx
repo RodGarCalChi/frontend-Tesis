@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { useCurrentUser } from '@/context/auth';
 import { Role } from '@/lib/roles';
 import {
   Card,
