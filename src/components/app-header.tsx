@@ -32,6 +32,12 @@ export default function AppHeader() {
   const pathname = usePathname();
   const title = pathToTitle[pathname] || 'PharmaFlow';
   const { role, setRole } = useCurrentUser();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    try { localStorage.removeItem('pharmaflow:role'); } catch (e) {}
+    router.push('/login');
+  };
 
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 lg:px-6">
