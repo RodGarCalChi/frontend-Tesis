@@ -27,9 +27,11 @@ export default function RootLayout({
         {isLoginPage ? (
           children
         ) : (
-          <AppLayout>
-            {children}
-          </AppLayout>
+          <CurrentUserProvider>
+            <AppLayout>
+              {children}
+            </AppLayout>
+          </CurrentUserProvider>
         )}
         <Toaster />
       </body>
