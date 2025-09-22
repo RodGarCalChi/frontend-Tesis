@@ -1,17 +1,37 @@
-import './globals.css'
-import React from 'react'
+'use client';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Toaster } from '@/components/ui/toaster';
+import { usePathname } from 'next/navigation';
+import AppLayout from '@/components/app-layout';
 
-export const metadata = {
-  title: 'Nextn',
-  description: 'Fixed minimal app layout',
-}
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const pathname = usePathname();
+  const isLoginPage = pathname === '/login';
+
   return (
     <html lang="en">
-      <body className="bg-background text-foreground">
-        {children}
+      <head>
+        <title>PharmaFlow</title>
+        <meta name="description" content="A Warehouse Management System for pharmaceutical logistics." />
+      </head>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {isLoginPage ? (
+          children
+        ) : (
+          <AppLayout>
+            {children}
+          </AppLayout>
+        )}
+        <Toaster />
       </body>
     </html>
-  )
+  );
 }
