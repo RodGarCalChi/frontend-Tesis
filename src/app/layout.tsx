@@ -5,6 +5,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { usePathname } from 'next/navigation';
 import AppLayout from '@/components/app-layout';
+import { CurrentUserProvider } from '@/context/auth';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
