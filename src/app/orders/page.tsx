@@ -250,7 +250,7 @@ export default function OrdersPage() {
                     </Badge>
                   </TableCell>
                   <TableCell>{order.supplier || order.customer}</TableCell>
-                  <TableCell>{new Date(order.orderDate).toLocaleDateString()}</TableCell>
+                  <TableCell>{formatDateISO(order.orderDate)}</TableCell>
                   <TableCell>
                     <Badge variant={getStatusVariant(order.status)}>
                       {order.status}
