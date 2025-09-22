@@ -24,16 +24,16 @@ export default function RootLayout({
         <meta name="description" content="A Warehouse Management System for pharmaceutical logistics." />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
-        {isLoginPage ? (
-          children
-        ) : (
-          <CurrentUserProvider>
+        <CurrentUserProvider>
+          {isLoginPage ? (
+            children
+          ) : (
             <AppLayout>
               {children}
             </AppLayout>
-          </CurrentUserProvider>
-        )}
-        <Toaster />
+          )}
+          <Toaster />
+        </CurrentUserProvider>
       </body>
     </html>
   );
