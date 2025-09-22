@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,7 +10,9 @@ import {
   SidebarFooter,
   Sidebar,
 } from '@/components/ui/sidebar';
-import { LayoutDashboard, Package, Warehouse, Users, Settings, LogOut, PackageSearch, Boxes, Truck, Send, BarChart3 } from 'lucide-react';
+import { LayoutDashboard, Package, Warehouse, Users, Settings, LogOut, PackageSearch, Boxes, Truck, BarChart3 } from 'lucide-react';
+import { useCurrentUser } from '@/context/auth';
+import { canAccess } from '@/lib/roles';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -27,6 +27,9 @@ const navItems = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const { role } = useCurrentUser();
+
+  const visibleItems = navItems.filter((it) => canAccess(role, it.href));
 
   return (
     <Sidebar>
@@ -38,7 +41,7 @@ export default function Nav() {
       </SidebarHeader>
       <SidebarContent className="p-2">
         <SidebarMenu>
-          {navItems.map((item) => (
+          {visibleItems.map((item) => (
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton
                 asChild
