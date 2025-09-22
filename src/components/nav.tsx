@@ -61,7 +61,7 @@ export default function Nav() {
       <SidebarFooter className="p-2">
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Logout">
+                <SidebarMenuButton tooltip="Logout" onClick={() => { localStorage.removeItem('pharmaflow:role'); router.push('/login'); }}>
                     <LogOut />
                     <span>Logout</span>
                 </SidebarMenuButton>
