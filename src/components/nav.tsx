@@ -28,6 +28,7 @@ const navItems = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const router = useRouter();
   const { role } = useCurrentUser();
 
   const visibleItems = navItems.filter((it) => canAccess(role, it.href));
