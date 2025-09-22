@@ -319,7 +319,7 @@ export default function OrdersPage() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Fecha Esperada</label>
-                  <div className="mt-1">{new Date(selectedOrder.expectedDate).toLocaleDateString()}</div>
+                  <div className="mt-1">{formatDateISO(selectedOrder.expectedDate)}</div>
                 </div>
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Monto Total</label>
