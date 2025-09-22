@@ -331,7 +331,7 @@ export default function ReportsPage() {
                   </CardDescription>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">
-                      Último: {new Date(template.lastGenerated).toLocaleDateString()}
+                      Último: {formatDateISO(template.lastGenerated)}
                     </span>
                     <Button size="sm" onClick={() => openGenerateDialog(template)}>
                       <FileText className="h-4 w-4 mr-2" />
