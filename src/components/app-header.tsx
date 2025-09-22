@@ -14,6 +14,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useCurrentUser } from '@/context/auth';
+import { ALL_ROLES } from '@/lib/roles';
 
 const pathToTitle: { [key: string]: string } = {
   '/dashboard': 'Dashboard',
