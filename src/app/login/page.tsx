@@ -97,7 +97,7 @@ export default function LoginPage() {
                   <SelectValue placeholder="Selecciona un rol" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
                   <SelectItem value="manager">Manager</SelectItem>
                   <SelectItem value="receiving">Recepcionista</SelectItem>
                   <SelectItem value="operator">Operador</SelectItem>
