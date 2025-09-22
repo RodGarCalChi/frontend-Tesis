@@ -46,7 +46,7 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const mapped = mapRole(role);
-    setCtxRole(mapped);
+    try { localStorage.setItem('pharmaflow:role', mapped); } catch (e) {}
 
     // Redirect by role
     if (mapped === 'Recepcion') router.push('/receiving');
