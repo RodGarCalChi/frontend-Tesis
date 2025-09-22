@@ -445,7 +445,7 @@ export default function UsersPage() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Fecha de Creación</label>
-                  <div className="mt-1">{new Date(selectedUser.createdAt).toLocaleDateString()}</div>
+                  <div className="mt-1">{formatDateISO(selectedUser.createdAt)}</div>
                 </div>
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Último Acceso</label>
