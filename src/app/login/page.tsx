@@ -26,7 +26,6 @@ import { Warehouse } from 'lucide-react';
 export default function LoginPage() {
   const router = useRouter();
   const [role, setRole] = React.useState('');
-  const { setRole: setCtxRole } = useCurrentUser();
 
   const mapRole = (value: string): Role => {
     switch (value) {
