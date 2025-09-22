@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -75,9 +74,28 @@ const mockRecentMovements = [
   },
 ];
 
+import { useCurrentUser } from '@/context/auth';
+
 export default function InventoryMovementsPage() {
   const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState<'IN' | 'OUT'>('IN');
+  const { role } = useCurrentUser();
+
+  const allowedTabs = (role: string) => {
+    switch (role) {
+      case 'Recepcion':
+      case 'Calidad':
+        return ['IN'] as ('IN' | 'OUT')[];
+      case 'Transportes':
+        return ['OUT'] as ('IN' | 'OUT')[];
+      case 'Cliente':
+        return [] as ('IN' | 'OUT')[];
+      default:
+        return ['IN','OUT'] as ('IN' | 'OUT')[];
+    }
+  };
+
+  const tabs = allowedTabs(role);
+  const [activeTab, setActiveTab] = useState<'IN' | 'OUT'>(tabs[0] ?? 'IN');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
